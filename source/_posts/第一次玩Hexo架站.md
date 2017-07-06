@@ -1,0 +1,106 @@
+---
+title: 第一次玩Hexo架站
+date: 2017-07-06 18:36:32
+categories:
+- 網站設計
+- Hexo
+tags:
+- Hexo
+- 網站設計
+- 第一次
+- 經驗
+---
+<div class="post-toc-outer">
+  <div class="post-toc">
+    <ul>
+      <li><a href="#header-0">前言</a></li>
+      <li><a href="#header-1">安裝Hexo</a></li>
+      <li><a href="#header-2">Run Hexo</a></li>
+      <li><a href="#header-3">個人化</a></li>
+    </ul>
+  </div>
+</div>
+<h1 id="header-0">前言</h1>
+看了許多人的GitHub Page之後，心頭躍躍欲試。之前一直考慮是要自己重寫一個可以產生靜態網站的程式或是選用現成的網誌工具，最後還是不敵懶惰的天性選擇了許多人使用的Hexo。
+
+經過一天的努力終於弄好了整個Hexo的環境，修改了一些設定及版面CSS設計後，完成了這個自己的個人網站~
+
+<h1 id="header-1">安裝Hexo</h1>
+開始以Hexo([https://hexo.io/zh-tw/](https://hexo.io/zh-tw/))作為靜態網站架站工具前，你的電腦必須支援以下功能：
+
+- [Node.js](http://nodejs.org/)
+- [Git](http://git-scm.com/)
+<!--more-->
+
+確定安裝了以上的相依套件後，你就可以用node.js的套件安裝包npm來完成Hexo的安裝
+
+{% codeblock %}
+   $ npm install -g hexo-cli
+{% endcodeblock %}
+
+<h1 id="header-2">Run Hexo</h1>
+安裝完成後需要執行建立部落格檔案的動作，請在CMD下切換到你要存放部落格的目錄，接著打下指令：
+
+{% codeblock %}
+   $ hexo init 'your_folder_name'
+   $ cd 'your_folder_name'
+   $ npm install
+{% endcodeblock %}
+
+如此一來最基本的部落格檔案就自動生成了，有關生成後的檔案結構可以到[Hexo中文官網](https://hexo.io/zh-tw/docs/setup.html)查看。這時候的部落格雖然是空的，但已經可以直接運行來查看是否成功安裝。
+
+{% codeblock %}
+   $ hexo server
+{% endcodeblock %}
+
+
+打開你常用的瀏覽器，照著CMD輸出上的網址打上(一般預設是localhost:4000/)，沒有意外發生的話，你應該就能看到陽春版的Hexo預設主題 - landscape。
+
+{% asset_img landscape.png Hexo預設的landscape主題 %}
+
+有關更進階的產生日誌、更換主題的說明可以參考[Hexo中文官網](https://hexo.io/zh-tw/docs/setup.html)，應該都滿容易理解的~
+
+<h1 id="header-3">個人化</h1>
+雖然說連自己寫個靜態部落格產生器都懶，但為了讓自己的網誌有個人的特色(或者說自己看了會比較順眼)，因此我決定修改一下預設的主題CSS及Layout檔。這裡不說Hexo的檔案結構非常完整，基本上如果你對網站設計跟程式語言有接觸的話，應該不難去找到如何修改成自己需要的主題。
+
+如果是要改生成出來的模板效果，有時候需要去修改Hexo的原始js程式碼，舉例來說我就覺得首頁的per_page跟archives底下的per_page共用有點不太人性，因為預設landscape的archives表現是一個區塊一個區塊，如果只有十筆資料的話下方會留許多空白，因此我就改了node_modules/hexo-generator-archive/底下的index.js以及lib/generator.js
+
+{% codeblock index.js lang:JavaScript %}
+	var per_page;
+	var archive_per_page;
+	
+	if (hexo.config.archive === 1) {
+	  per_page = 0;
+	  archive_per_page = 0
+	} else if (typeof hexo.config.per_page === 'undefined') {
+	  per_page = 10;
+	  archive_per_page=18;
+	} else {
+	  per_page = hexo.config.per_page;
+	  archive_per_page = hexo.config.archive_per_page;
+	}
+{% endcodeblock %}
+
+{% codeblock lib/generator.js lang:JavaScript %}
+  function generate(path, posts, options) {
+    options = options || {};
+    options.archive = true;
+    if(path.match('^archives/.*$')){
+        perPage = config.archive_generator.archive_per_page;
+    }else{
+        perPage = config.archive_generator.per_page;
+    }
+    result = result.concat(pagination(path, posts, {
+      perPage: perPage,
+      layout: ['archive', 'index'],
+      format: paginationDir + '/%d/',
+      data: options
+    }));
+  }
+{% endcodeblock %}
+
+如此一來就能達到理想的效果了~
+
+{% asset_img end.png 完結灑花！ %}
+
+<div class="right post-end">To be continued..</div>

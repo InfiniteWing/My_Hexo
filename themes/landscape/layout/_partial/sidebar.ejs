@@ -1,0 +1,29 @@
+<aside id="sidebar"<% if (theme.sidebar === 'bottom'){ %> class="outer"<% } %>>
+  <div class="widget-wrap">
+    <div class="widget-profile">
+      <div class="widget-profile-avatar">
+      </div>
+      <h3 class="widget-profile-title" style="text-transform: capitalize;margin: 10px 0px;">InfiniteWing</h3>
+      <div class="widget-profile-socials">
+        <a href="https://github.com/InfiniteWing" target="_blank">
+          <i class="fa fa-github-square fa-3x"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/InfiniteWing/" target="_blank">
+          <i class="fa fa-linkedin-square fa-3x"></i>
+        </a>
+        <a href="https://twitter.com/inthewing" target="_blank">
+          <i class="fa fa-twitter-square fa-3x"></i>
+        </a>
+        <a href="mailto:iamshanawing@gmail.com" target="_blank">
+          <i class="fa fa-envelope-square fa-3x"></i>
+        </a>
+      </div>
+    </div>
+    <div class="widget" style="color: white;">
+      Where Do We Come From?<br />What Are We?<br />Where Are We Going?
+    </div>
+  </div>
+  <% theme.widgets.forEach(function(widget){ %>
+    <%- partial('_widget/' + widget) %>
+  <% }) %>
+</aside>
