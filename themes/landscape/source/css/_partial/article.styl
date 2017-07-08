@@ -46,6 +46,7 @@
     color: color-link
 .post-toc-outer
   text-align: center
+  margin-top: 20px
 .archive-post-less
   .post-toc-outer
     display: none
@@ -55,9 +56,11 @@
   border-radius: 8px
   display:inline-block
   width:180px
-  ul
+  ul,ol
     list-style-type: none
-    margin: -10px 0px
+    margin: 15px 0px
+    li
+      line-height: 30px
 
 .article-more-link
   text-align: center
@@ -82,7 +85,7 @@
     color: color-link
     text-decoration: none
     &:hover
-      text-decoration: underline
+      color: color-link-yellow
   ul, ol, dl
     line-height: 1em
   img, video
@@ -105,9 +108,12 @@
     padding: 10px 0
   blockquote
     font-family: font-serif
-    font-size: 1.4em
+    font-style: italic
+    font-size: 0.9em
+    line-height: 1em
     margin: line-height 20px
     text-align: center
+    color: #c5c5c5
     footer
       font-size: font-size
       margin: line-height 0

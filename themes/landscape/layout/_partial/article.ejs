@@ -11,6 +11,11 @@
       </header>
     <% } %>
     <div class="article-entry" itemprop="articleBody">
+      <div class="post-toc-outer">
+        <div class="post-toc">
+          <%- toc(post.content, {list_number: false}) %>
+        </div>
+      </div>
       <% if (post.excerpt && index){ %>
         <%- post.excerpt %>
         <% if (theme.excerpt_link){ %>
