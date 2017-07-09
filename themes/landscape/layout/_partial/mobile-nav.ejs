@@ -1,5 +1,17 @@
 <nav id="mobile-nav">
-  <% for (var i in theme.menu){ %>
-    <a href="<%- url_for(theme.menu[i]) %>" class="mobile-nav-link"><%= i %></a>
-  <% } %>
+  <a class="mobile-nav-link nav-icon" href="/">
+    <li class="fa fa-home" style="font-size: 1.3em;"></li>Home
+  </a>
+  <a class="mobile-nav-link nav-icon" href="/about">
+    <li class="fa fa-user" style="font-size: 1.3em;"></li>About
+  </a>
+  <a class="mobile-nav-link nav-icon" href="/archives">
+    <li class="fa fa-archive" style="font-size: 1.3em;"></li>Archives
+  </a>
+  <a class="mobile-nav-link nav-icon" href="/work">
+    <li class="fa fa-gamepad" style="font-size: 1.3em;"></li>Work
+  </a>
+  <a class="mobile-nav-link nav-icon" href="/gallery">
+    <li class="fa fa-heart" style="font-size: 1.3em;"></li>Gallery
+  </a>
 </nav>
