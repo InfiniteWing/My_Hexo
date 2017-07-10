@@ -1,5 +1,8 @@
 (function($){
   // Search
+  if($(".post-toc").children().length==0){
+    $(".post-toc").hide();
+  }
   var $searchWrap = $('#search-form-wrap'),
     isSearchAnim = false,
     searchAnimDuration = 200;
