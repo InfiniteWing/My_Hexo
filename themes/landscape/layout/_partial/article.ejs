@@ -29,6 +29,10 @@
       <div class="right post-end">To be continued..</div>
     </div>
     <footer class="article-footer">
+      <div class="center post-datetime">
+        Posted at 
+        <%- full_date(post.date,'YYYY-MM-DD hh:mm:ss') %>
+      </div>
       <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
       <% if (post.comments && config.disqus_shortname){ %>
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
