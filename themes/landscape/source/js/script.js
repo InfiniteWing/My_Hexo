@@ -1,4 +1,23 @@
+function iframeLoaded() {
+  var iFrameID = document.getElementById('ipynb');
+  if(iFrameID) {
+    // here you can make the height, I delete it first, then I make it again
+    iFrameID.height = "";
+    iFrameID.height = (iFrameID.contentWindow.document.body.scrollHeight+20) + "px";
+  }   
+}
+
 (function($){
+  //ipython notebook html ifram
+  $('iframe').load( function() {
+    $('iframe').contents().find("body").css("background","#303030");
+    iframeLoaded();
+  });
+  
+  $( window ).resize(function() {
+    iframeLoaded();
+  });
+  
   // Search
   if($(".post-toc").children().length==0){
     $(".post-toc").hide();
