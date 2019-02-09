@@ -21,4 +21,45 @@
   <%- js('fancybox/jquery.fancybox.pack') %>
 <% } %>
 
+<script src="/js/jquery.min.js"></script>
+<script src="/js/guider.js"></script>
+<script src="/js/js.cookie.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/youtube_embed.js"></script>
+<script src="/js/SmoothScroll.min.js"></script>
+<script src="/js/top.js"></script>
+
+<link rel="stylesheet" href="/css/InfiniteWing.css">
+<div class="IW-guider">
+    <div class="audio-box">
+        <div style="text-align: center;padding-top: 3px;">
+            <span class="fa fa-step-backward youtube-audio-backward"></span>
+            <span class="fa fa-play youtube-audio-play-control"></span>
+            <span class="fa fa-stop youtube-audio-stop"></span>
+            <span class="fa fa-step-forward youtube-audio-forward"></span>
+            <span class="fa fa-youtube-play youtube-audio-youtube"></span>
+        </div>
+        <div style="display: none;">
+            <div data-video="HQnC1UHBvWA" id="youtube-audio"></div>
+        </div>
+        <script src="https://www.youtube.com/iframe_api"></script>
+    </div>
+    <div class="msg-box">
+        <span></span>
+    </div>
+    <div class="guider-img-public" style="display: none;">
+    </div>
+    <div class="guider-img-base" style="display: none;">
+        <div class="guider-img">
+
+        </div>
+    </div>
+</div>
+<div class="IW-guider-control-panel">
+    <div class="IW-guider-control-btn"><span class="fa fa-arrow-up guider-up"></span></div>
+    <div class="IW-guider-control-btn"><span class="fa fa-arrow-down guider-down"></span></div>    
+    <div class="IW-guider-control-btn"><span class="fa fa-copyright guider-copyright"></span></div>
+    <div class="IW-guider-control-btn"><span class="fa fa-music guider-music"></span></div>
+    <div class="IW-guider-control-btn"><span class="fa fa-power-off guider-power"></span></div>
+</div>
 <%- js('js/script') %>
